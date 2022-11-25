@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My To-do</title>
+</head>
+
+<body>
+  <input id="input1" type="text" placeholder="할일 목록을 입력하세요.">
+  <button id="buttonAdd">할일 추가</button>
+
+  <script>
+    const inputText = document.querySelector("#input1");
+    const buttonAdd = document.querySelector("#buttonAdd");
+
+    // 추가 버튼 이벤트 연결
+    buttonAdd.addEventListener("click", () => {
+      const divTag = document.createElement("div");
+
+      const chk1 = document.createElement("input");
+      const spanTag = document.createElement("span");
+      const deleteBtn = document.createElement("button");
+
+      divTag.appendChild(chk1);
+      divTag.appendChild(spanTag);
+      divTag.appendChild(deleteBtn);
+      document.body.appendChild(divTag);
+
+      // 속성 정의
+      spanTag.textContent = inputText.value;
+      chk1.type = "checkbox";
+      deleteBtn.textContent = "삭제";
+
+      // 체크 박스 이벤트 연결
+      chk1.addEventListener("change", () => {
+        if (chk1.checked===true) {
+            spanTag.style.textDecoration = "line-through";
+        } else {
+            spanTag.style.textDecoration = "";
+        }
+      });
+
+      deleteBtn.addEventListener("click", (evt)=>{
+        divTag.parentNode.removeChild(divTag);
+        // evt.target.parentNode.parentNode.removeChild(divTag);
+      })
+
+
+    });
+  </script>
+</body>
+
+
+</html>
