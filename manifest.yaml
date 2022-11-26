@@ -1,0 +1,6 @@
+applications:
+  - name : todo-testapp
+    memory : 64M
+    path : ./
+    buildpacks:
+      - staticfile_buildpack
